@@ -60,8 +60,7 @@ def load(spark, data="data/trump.csv"):
         StructField("city", StringType(), True),
         StructField("state", StringType(), True),
         StructField("lat", FloatType(), True),
-        StructField("lng", FloatType(), True)
-        
+        StructField("lng", FloatType(), True)  
     ])
 
     df = spark.read.option("header", "true").schema(schema).csv(data)
