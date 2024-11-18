@@ -8,11 +8,10 @@ spark = SparkSession.builder.appName("Transform").getOrCreate()
 def transform(
     catalog="ids706_data_engineering",
     input_database="fuyao_db",
-    input_table_name="rally",
     output_database="fuyao_db_transform",
     output_table_name="rally_region",
 ):
-    input_table_full_name = f"{catalog}.{input_database}.{input_table_name}"
+    input_table_full_name = f"{catalog}.{input_database}.rally"
     output_table_full_name = f"{catalog}.{output_database}.{output_table_name}"
 
     print(f"Reading input table from: {input_table_full_name}")
