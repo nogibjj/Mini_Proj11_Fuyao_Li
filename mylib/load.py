@@ -7,8 +7,6 @@ from pyspark.sql.types import (
      StringType, 
 )
 
-spark = SparkSession.builder.appName('PySparkTrump').getOrCreate()
-
 
 def load_to_databricks(
     data="dbfs:/FileStore/mini_project11/trump_mini11.csv",
@@ -16,6 +14,8 @@ def load_to_databricks(
     database="fuyao_db",
     table_name="rally",
 ):
+    spark = SparkSession.builder.appName('PySparkTrump').getOrCreate()
+    
     schema = StructType([
         StructField("date", StringType(), True),
         StructField("location", StringType(), True),

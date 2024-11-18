@@ -1,15 +1,13 @@
 from pyspark.sql import SparkSession
 
 
-spark = SparkSession.builder.appName("Query").getOrCreate()
-
-
 def query(
     catalog="ids706_data_engineering",
     input_database="fuyao_db",
     output_database="fuyao_db_processed",
     output_table_name="rally_larger_than_40",
 ):
+    spark = SparkSession.builder.appName("Query").getOrCreate()
     input_table_full_name = f"{catalog}.{input_database}.rally"
     query_sql = f"SELECT * FROM {input_table_full_name} WHERE lat > 40"
     output_table_full_name = f"{catalog}.{output_database}.{output_table_name}"

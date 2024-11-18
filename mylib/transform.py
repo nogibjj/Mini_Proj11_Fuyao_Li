@@ -2,15 +2,13 @@ from pyspark.sql import SparkSession
 from pyspark.sql.functions import when, col
 
 
-spark = SparkSession.builder.appName("Transform").getOrCreate()
-
-
 def transform(
     catalog="ids706_data_engineering",
     input_database="fuyao_db",
     output_database="fuyao_db_transform",
     output_table_name="rally_region",
 ):
+    spark = SparkSession.builder.appName("Transform").getOrCreate()
     input_table_full_name = f"{catalog}.{input_database}.rally"
     output_table_full_name = f"{catalog}.{output_database}.{output_table_name}"
 
@@ -33,3 +31,7 @@ def transform(
     )
     
     return transform_df
+
+
+if __name__ == "__main__":
+    transform()
