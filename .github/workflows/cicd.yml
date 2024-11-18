@@ -13,6 +13,11 @@ jobs:
       - uses: actions/checkout@v3
       - name: install packages
         run: make install
+      - name: Set up
+        env:
+          SERVER_HOST_NAME: ${{ secrets.SERVER_HOST_NAME }}
+          DATABRICKS_KEY: ${{ secrets.DATABRICKS_KEY }}
+        run: make Set up
       - name: lint
         run: make lint
       - name: test
