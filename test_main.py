@@ -16,9 +16,11 @@ url = f"https://{server_h}/api/2.0"
 
 
 # Validate environment variables
-if not server_h or not access_token:
+if not server_h:
     raise ValueError("SERVER_HOSTNAME and ACCESS_TOKEN must be set in the .env file.")
 
+if not access_token:
+    raise ValueError("SERVER_HOSTNAME and ACCESS_TOKEN must be set in the .env file.")
 
 def check_filestore_path(path, headers): 
     try:
