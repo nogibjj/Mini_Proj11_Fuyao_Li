@@ -4,7 +4,7 @@ spark = SparkSession.builder.appName("Query").getOrCreate()
 
 
 def query(
-    spark,
+    spark=spark,
     catalog="ids706_data_engineering",
     input_database="fuyao_db",
     output_database="fuyao_db_processed",
