@@ -7,15 +7,12 @@ from pyspark.sql.types import (
      StringType, 
 )
 
-def create_spark_session(appName):
-    """Create and return a Spark session."""
-    spark = SparkSession.builder.appName(appName).getOrCreate()
-    return spark
+spark = SparkSession.builder.appName('PySparkTrump').getOrCreate()
 
 
 def load_to_databricks(
-    spark, 
-    data="data/trump.csv",
+    spark=spark, 
+    data="dbfs:/FileStore/mini_project11/trump_mini11.csv",
     catalog="ids706_data_engineering",
     database="fuyao_db",
     table_name="rally",
