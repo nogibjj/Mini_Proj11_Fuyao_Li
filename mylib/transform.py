@@ -9,7 +9,7 @@ def transform(
     catalog="ids706_data_engineering",
     input_database="fuyao_db",
     input_table_name="rally",
-    output_database="fuyao_db_processed",
+    output_database="fuyao_db_transform",
     output_table_name="rally_region",
 ):
     input_table_full_name = f"{catalog}.{input_database}.{input_table_name}"
