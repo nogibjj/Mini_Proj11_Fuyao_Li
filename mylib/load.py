@@ -11,7 +11,6 @@ spark = SparkSession.builder.appName('PySparkTrump').getOrCreate()
 
 
 def load_to_databricks(
-    spark=spark, 
     data="dbfs:/FileStore/mini_project11/trump_mini11.csv",
     catalog="ids706_data_engineering",
     database="fuyao_db",

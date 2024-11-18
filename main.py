@@ -1,28 +1,26 @@
-from mylib.calculator import (
-    log_output,
-    create_spark_session,
-    extract,
-    load,
-    query_data,
-    transform
-)
+from mylib.extract import extract
+from mylib.transform import transform
+from mylib.query import query
+from mylib.load import load_to_databricks
+from pyspark.sql import SparkSession
+
 
 if __name__ == "__main__":
     # Main ETL process
-    spark = create_spark_session("PySparkTrump")
+    
+    spark = SparkSession.builder.appName('PySparkTrump').getOrCreate()
 
     # Extract
     extract()
 
     # Load
-    df = load(spark)
+    load_to_databricks()
 
     # Query
-    query_data(spark, df)
+    query()
 
     # Transform
-    transform(df)
+    transform()
 
     # Stop the Spark session
     spark.stop()
-    log_output("Spark session stopped.")

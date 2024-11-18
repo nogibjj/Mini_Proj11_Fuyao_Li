@@ -2,7 +2,7 @@ from pyspark.sql import SparkSession
 from pyspark.sql.functions import when, col
 
 
-spark = SparkSession.builder.appName("Query").getOrCreate()
+spark = SparkSession.builder.appName("Transform").getOrCreate()
 
 
 def transform(
