@@ -1,14 +1,14 @@
 from pyspark.sql import SparkSession
 
-spark = SparkSession.builder.appName("Custom Query Execution").getOrCreate()
+spark = SparkSession.builder.appName("Query").getOrCreate()
 
 
-def custom_query(
+def query(
     spark,
     catalog="ids706_data_engineering",
     input_database="fuyao_db",
     output_database="fuyao_db_processed",
-    output_table_name="rally_larger_40",
+    output_table_name="rally_larger_than_40",
 ):
     input_table_full_name = f"{catalog}.{input_database}.rally"
     query = f"SELECT * FROM {input_table_full_name} WHERE lat > 40"
@@ -25,4 +25,4 @@ def custom_query(
 
 
 if __name__ == "__main__":
-    custom_query()
+    query()
