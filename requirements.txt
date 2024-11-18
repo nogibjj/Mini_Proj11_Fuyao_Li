@@ -16,3 +16,5 @@ tabulate
 requests
 pandas
 dbutils
+python-dotenv
+databricks-sql-connector
