@@ -8,17 +8,37 @@
 + Include at least one data source and one data sink
 
 ## Project Structure
-The ETL pipeline in this project is divided into three main stages:
+1. Extracting Data
++ A dataset is fetched from a public URL (e.g., Kaggle, GitHub).
++ The data is saved to a temporary local file (/tmp) and then copied to Databricks FileStore (dbfs:/FileStore/mini_project11/).
++ Loading Data into Databricks
 
-+ Extract: Retrieve data from a remote source or a local file.
-+ Transform: Process and manipulate the data, such as filtering, aggregating, or creating new columns to derive meaningful insights.
-+ Load: Store the processed data into a PySpark DataFrame, making it ready for analysis or downstream operations.
+2. The dataset is read into a PySpark DataFrame with a specified schema.
++ A Delta table is created in Databricks under the specified catalog, database, and table name.
++ The data is saved as a Delta table for querying.
 
-## Key Features
-+ Data Extraction: Supports data retrieval from both remote sources and local CSV files.
-+ Data Transformation: Performs a variety of transformations including data filtering, aggregation, and calculation of new columns.
-+ Data Loading: Loads the transformed data into a PySpark DataFrame for further processing and analysis.
-+ Testing: Comprehensive unit tests to ensure the robustness of the ETL pipeline components using pytest and PySpark.
+3. Query Task
++ Filters rows from the input Delta table where lat > 40.
++ Saves the result to a new Delta table in a specified catalog and database.
+
+4. Transform Task
++ Reads the input Delta table.
++ Adds a new column named Region based on the longitude (lng) value:
+    - West: lng < -100
+    - Central: -100 <= lng < -80
+    - East: lng >= -80
++ Saves the transformed data to a new Delta table.
+
+
+## Databricks Operation
+1. Create a new Compute
+![compute](fig/compute.png)
+2. Install pickages
+![install](fig/install.png)
+3. Upload the file
+![csv](fig/csv.png)
+4. Required databases
+
 
 ## Installation
 + Clone the repository:
